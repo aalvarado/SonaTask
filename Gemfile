@@ -13,6 +13,7 @@ gem 'will_paginate'
 gem 'factory_girl_rails'
 
 gem 'devise'
+gem 'omniauth'
 gem 'devise_token_auth'
 
 group :development do
