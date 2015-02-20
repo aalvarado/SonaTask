@@ -12,6 +12,9 @@ gem 'will_paginate'
 
 gem 'factory_girl_rails'
 
+gem 'devise'
+gem 'devise_token_auth'
+
 group :development do
   gem 'spring'
 end
