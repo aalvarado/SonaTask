@@ -10,10 +10,8 @@ gem 'pry-rails'
 gem 'active_model_serializers'
 gem 'will_paginate'
 
+gem 'factory_girl_rails'
+
 group :development do
   gem 'spring'
-end
-
-group :test do 
-  gem 'factory_girl_rails'
 end
