@@ -1,0 +1,18 @@
+defaults: &defaults
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+  username: sonatask
+  pool: 5
+
+development:
+  <<: *defaults
+  database: sonatask_development
+
+test:
+  <<: *defaults
+  database: sonatask_test
+
+production:
+  <<: *defaults
+  database: sonatask_production
