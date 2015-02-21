@@ -135,9 +135,14 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    versionist (1.4.1)
+      activesupport (>= 3)
+      railties (>= 3)
+      yard (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -153,4 +158,5 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-api
   spring
+  versionist
   will_paginate
