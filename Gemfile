@@ -12,6 +12,7 @@ gem 'active_model_serializers'
 gem 'will_paginate'
 gem 'responders'
 gem 'acts_as_list'
+gem 'textacular'
 
 gem 'factory_girl_rails'
 
@@ -25,6 +26,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development, :test do
