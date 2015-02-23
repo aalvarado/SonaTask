@@ -14,7 +14,7 @@ describe DeviseTokenAuth::SessionsController do
     context 'valid email and password' do
       it 'is successful' do
         post :create, auth_attr
-        expect( response ).to be_success
+        expect(response).to be_success
       end
     end
 
@@ -27,7 +27,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 401' do
         post :create, auth_attr
-        expect( response.status ).to eq 401
+        expect(response.status).to eq 401
       end
     end
 
@@ -40,9 +40,60 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 401' do
         post :create, auth_attr
-        expect( response.status ).to eq 401
+        expect(response.status).to eq 401
       end
 
+    end
+  end
+
+  describe 'delete' do
+    let( :auth_header ) { user.create_new_auth_token }
+
+    before do
+      request.headers.merge! auth_header
+    end
+
+    context 'correct token header' do
+
+      it 'is success' do
+        delete :destroy
+        expect(response).to be_success
+      end
+    end
+
+    context 'wrong token' do
+      before do
+        request.headers['access-token'] = 'invalid'
+      end
+
+      shared_examples_for 'invalid_auth_data' do
+        it 'is 404' do
+          delete :destroy
+          expect(response.status).to eq 404
+        end
+      end
+    end
+
+    context 'wrong uid' do
+      before do
+        request.headers['uid'] = 'invalid'
+      end
+
+      it 'is 404' do
+        delete :destroy
+        expect(response.status).to eq 404
+      end
+    end
+
+    context 'wrong client' do
+      before do
+        request.headers['client'] = 'invalid'
+      end
+
+      it 'is 404' do
+        delete :destroy
+        expect(response.status).to eq 404
+      end
     end
   end
 end
