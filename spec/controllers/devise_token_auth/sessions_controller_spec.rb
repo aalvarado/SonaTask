@@ -6,10 +6,6 @@ describe DeviseTokenAuth::SessionsController do
   let(:auth_attr ) { { email: email, password: password } }
   let!(:user) { create :user, auth_attr }
 
-  before do
-     @request.env["devise.mapping"] = Devise.mappings[:user]
-  end
-
   describe 'post' do
     context 'valid email and password' do
       it 'is successful' do

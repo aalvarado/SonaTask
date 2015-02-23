@@ -24,4 +24,8 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.before type: :controller do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
 end
