@@ -20,5 +20,15 @@ describe DeviseTokenAuth::RegistrationsController do
         expect(response.headers['token-type']).to eq 'Bearer'
       end
     end
+
+    context 'with missing email' do
+      before do
+        auth_attr.merge! email: ''
+      end
+      it 'is eql 401' do
+        post :create, auth_attr
+        expect( response.status ).to eq 403
+      end
+    end
   end
 end
