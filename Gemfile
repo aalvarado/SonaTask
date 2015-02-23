@@ -10,6 +10,7 @@ gem 'pry-rails'
 
 gem 'active_model_serializers'
 gem 'will_paginate'
+gem 'responders'
 
 gem 'factory_girl_rails'
 
@@ -19,4 +20,8 @@ gem 'devise_token_auth'
 
 group :development do
   gem 'spring'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
