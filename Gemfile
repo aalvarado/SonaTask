@@ -11,6 +11,7 @@ gem 'pry-rails'
 gem 'active_model_serializers'
 gem 'will_paginate'
 gem 'responders'
+gem 'acts_as_list'
 
 gem 'factory_girl_rails'
 
