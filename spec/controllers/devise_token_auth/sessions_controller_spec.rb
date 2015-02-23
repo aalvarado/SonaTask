@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 describe DeviseTokenAuth::SessionsController do
-  let(:password) { 'password' }
-  let(:email) { 'some@email.dev' }
-  let(:auth_attr ) { { email: email, password: password } }
-  let!(:user) { create :user, auth_attr }
+  let( :password ) { 'password' }
+  let( :email ) { 'some@email.dev' }
+  let( :auth_attr ) { { email: email, password: password } }
+  let!( :user ) { create :user, auth_attr }
 
   describe 'post' do
     context 'valid email and password' do
       it 'is successful' do
         post :create, auth_attr
-        expect(response).to be_success
+        expect( response ).to be_success
       end
     end
 
@@ -23,7 +23,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 401' do
         post :create, auth_attr
-        expect(response.status).to eq 401
+        expect( response.status ).to eq 401
       end
     end
 
@@ -36,7 +36,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 401' do
         post :create, auth_attr
-        expect(response.status).to eq 401
+        expect( response.status ).to eq 401
       end
 
     end
@@ -53,7 +53,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is success' do
         delete :destroy
-        expect(response).to be_success
+        expect( response ).to be_success
       end
     end
 
@@ -65,7 +65,7 @@ describe DeviseTokenAuth::SessionsController do
       shared_examples_for 'invalid_auth_data' do
         it 'is 404' do
           delete :destroy
-          expect(response.status).to eq 404
+          expect( response.status ).to eq 404
         end
       end
     end
@@ -77,7 +77,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 404' do
         delete :destroy
-        expect(response.status).to eq 404
+        expect( response.status ).to eq 404
       end
     end
 
@@ -88,7 +88,7 @@ describe DeviseTokenAuth::SessionsController do
 
       it 'is 404' do
         delete :destroy
-        expect(response.status).to eq 404
+        expect( response.status ).to eq 404
       end
     end
   end

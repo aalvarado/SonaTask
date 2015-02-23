@@ -45,5 +45,9 @@ conn.post '/auth', { email: 'some@dev.dev', password: 'password' }
 conn.post '/auth/sign_in', { email: 'some@dev.dev', password: 'password' }
 conn.delete '/auth/sign_out', {}, {'access-token' => '7LBVZufvDJHwhxBwQFf31w', 'uid' => 'some@dev.dev', 'client' => '8IOJ4Uv1pVUUxQWay-MNLg' }
 ```
+## Rspec customizations
 
-
+- All requests in `spec/controllers/api` are set `['HTTP_ACCEPT'] = 'application/json'` request header.
+- `login_user` sets auth headers in request. ( `access-token`, `client`, `uid` ).
+- `response_body_object` parses the body of response as JSON and into an `OpenStruct` object.
+- I like to keep `let` and `expect` with spaces between parenthesis
