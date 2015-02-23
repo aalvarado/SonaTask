@@ -17,11 +17,14 @@ SonaTask
 
 ## How to setup
 
-`git clone https://github.com/aalvarado/SonaTask.git sonatask`
+```
+git clone https://github.com/aalvarado/SonaTask.git sonatask
 
-`cd sonatask`
+cd sonatask
+bundle install
+```
 
-`bundle install`
+Create the `config/secrets.yml` and `config/initializers/secret_token.rb` files
 
 Create a postgresql and create `config/database.yml`, an example is provided at `config/database.yml.example`.
 
