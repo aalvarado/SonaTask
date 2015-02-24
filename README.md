@@ -37,7 +37,7 @@ Run Rails
 
 ### Nginx setup
 
-create a key:
+create a key and cert:
 
 ```
 openssl req -new -newkey rsa:2048 -sha1 -days 365 -nodes -x509 -keyout sonatask.key -out sonatask.crt
@@ -46,17 +46,22 @@ openssl req -new -newkey rsa:2048 -sha1 -days 365 -nodes -x509 -keyout sonatask.
 nginx conf
 
 ```
-server {
-  listen 80;
-  server_name sonatask.dev *.sonatask.dev;
+# Adjust paths to your own setup
 
-  # Depends on where ruby is located
+server {
+  server_name sonatask.dev *.sonatask.dev;
+  listen 80;
+  return 301 https://$server_name$request_uri;
+}
+
+server {
+  server_name sonatask.dev *.sonatask.dev;
+  listen 443 ssl;
+
   passenger_ruby /home/adan/.rbenv/versions/2.2.0/bin/ruby;
 
   passenger_enabled on;
   passenger_app_env development;
-
-  listen 443 ssl;
 
   root /home/adan/projects/adan/sonatask/public;
 
@@ -66,7 +71,6 @@ server {
   ssl_certificate     ../ssl/sonatask.crt;
   ssl_certificate_key ../ssl/sonatask.key;
 }
-
 ```
 
 ## Some usage
@@ -75,7 +79,7 @@ server {
 ```ruby
 # pry for example
 
-require 'faraday'; conn = Faraday.new( url: 'http://sonatask.dev' ) { |f| f.request :url_encoded; f.response :logger;  f.adapter Faraday.default_adapter }
+require 'faraday'; conn = Faraday.new( url: 'https://sonatask.dev', :ssl => {:verify => false } ) { |f| f.request :url_encoded; f.response :logger;  f.adapter Faraday.default_adapter }
 conn.post '/auth', { email: 'some@dev.dev', password: 'password' }
 conn.post '/auth/sign_in', { email: 'some@dev.dev', password: 'password' }
 conn.delete '/auth/sign_out', {}, {'access-token' => '7LBVZufvDJHwhxBwQFf31w', 'uid' => 'some@dev.dev', 'client' => '8IOJ4Uv1pVUUxQWay-MNLg' }
