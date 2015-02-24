@@ -6,6 +6,7 @@ SonaTask
 
 - Rbenv & ruby-build
 - Postgresql >= 9
+- Postgresql contrib
 - Some command line experience
 
 ## Recommendations
@@ -33,6 +34,40 @@ Create a postgresql and create `config/database.yml`, an example is provided at 
 Run Rails
 
 `bundle exec rails s`
+
+### Nginx setup
+
+create a key:
+
+```
+openssl req -new -newkey rsa:2048 -sha1 -days 365 -nodes -x509 -keyout sonatask.key -out sonatask.crt
+```
+
+nginx conf
+
+```
+server {
+  listen 80;
+  server_name sonatask.dev *.sonatask.dev;
+
+  # Depends on where ruby is located
+  passenger_ruby /home/adan/.rbenv/versions/2.2.0/bin/ruby;
+
+  passenger_enabled on;
+  passenger_app_env development;
+
+  listen 443 ssl;
+
+  root /home/adan/projects/adan/sonatask/public;
+
+  access_log access.log combined;
+  error_log  error.log;
+
+  ssl_certificate     ../ssl/sonatask.crt;
+  ssl_certificate_key ../ssl/sonatask.key;
+}
+
+```
 
 ## Some usage
 
