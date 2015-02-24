@@ -14,3 +14,4 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb
   - cp config/secrets.yml.example config/secrets.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
