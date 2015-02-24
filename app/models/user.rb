@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :tasks, -> { order("position ASC") }
+  has_many :tasks, -> { order("position ASC") }, dependent: :destroy
 end
