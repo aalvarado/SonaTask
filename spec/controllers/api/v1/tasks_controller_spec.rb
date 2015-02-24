@@ -53,6 +53,11 @@ describe Api::V1::TasksController do
           expect( response_body_object.send k ).to eq v
         end
       end
+
+      it 'success even if attribute not on permitted params' do
+        put :update, id: task.id, task: task_attr.merge({ invalid: 'invalid' })
+        expect( response ).to be_success
+      end
     end
   end #logged in user context
 end
