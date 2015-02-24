@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/aalvarado/SonaTask.svg)](https://travis-ci.org/aalvarado/SonaTask) 
 [![Code Climate](https://codeclimate.com/github/aalvarado/SonaTask/badges/gpa.svg)](https://codeclimate.com/github/aalvarado/SonaTask)
 [![Test Coverage](https://codeclimate.com/github/aalvarado/SonaTask/badges/coverage.svg)](https://codeclimate.com/github/aalvarado/SonaTask)
+[![Dependency Status](https://gemnasium.com/aalvarado/SonaTask.svg)](https://gemnasium.com/aalvarado/SonaTask)
 
 Simple User and Tasks api. See `spec` folder for examples on how to use.
 
