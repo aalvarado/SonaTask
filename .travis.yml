@@ -12,3 +12,4 @@ before_install:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - cp config/initializers/secret_token.rb{.example,}
