@@ -82,4 +82,40 @@ describe Api::V1::TasksController do
       it{ expect( response ).to be_success }
     end
   end #logged in user context
+
+  context 'when not logged in' do
+    describe 'get' do
+      before do
+        get :show, id: task.id
+      end
+
+      it{ expect( response.status ).to eq 401 }
+    end
+
+    describe 'index' do
+      before do
+        task
+        get :index
+      end
+
+      it{ expect( response.status ).to eq 401 }
+    end
+
+    describe 'update' do
+      before do
+        put :update, id: task.id, task: task_attr
+      end
+
+      it{ expect( response.status ).to eq 401 }
+    end
+
+    describe 'destroy' do
+      before do
+        task
+        delete :destroy, id: task.id
+      end
+
+      it{ expect( response.status ).to eq 401 }
+    end
+  end
 end
