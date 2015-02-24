@@ -26,8 +26,22 @@ describe Api::V1::TasksController do
       it{ expect( response ).to be_success }
 
       it 'returns the right task' do
-        expect( response_body_object.id ).to eq task.id
+        expect( response_body_object.task['id'] ).to eq task.id
       end
+    end
+
+    describe 'index' do
+      before do
+        task
+        get :index
+      end
+
+      it{ expect( response ).to be_success }
+
+      it 'returns the right task list' do
+        expect( response_body_object['tasks'].count ).to eq 1
+      end
+
     end
 
     describe 'create' do
@@ -50,7 +64,7 @@ describe Api::V1::TasksController do
         get :show, id: task.id
 
         task_attr.each do |k,v|
-          expect( response_body_object.send k ).to eq v
+          expect( response_body_object['task'].send :[], k.to_s ).to eq v
         end
       end
 
