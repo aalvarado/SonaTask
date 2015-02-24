@@ -1,6 +1,6 @@
 class Api::V1::TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_task, only: [:show, :update]
+  before_action :find_task, only: [:show, :update, :destroy]
 
   def show
     respond_with @task
@@ -20,6 +20,10 @@ class Api::V1::TasksController < ApplicationController
     respond_with @task
   end
 
+  def destroy
+    respond_with @task.destroy
+  end
+
   private
 
   def task_params
@@ -29,6 +33,7 @@ class Api::V1::TasksController < ApplicationController
       :expiration,
       :completed_on,
       :position,
+      tag_list: []
     ])
   end
 
