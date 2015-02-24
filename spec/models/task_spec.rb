@@ -51,4 +51,21 @@ describe Task do
       expect( task ).to be_valid
     end
   end
+
+  describe :tag_list do
+    let( :tag_name ) { 'cool' }
+    it 'can add' do
+      task.tag_list.add(tag_name)
+      task.save
+      expect( task.tag_list ).to include(tag_name)
+    end
+
+    it 'can be removed' do
+      task.tag_list.add(tag_name)
+      task.save
+      task.tag_list.remove(tag_name)
+      task.save
+      expect( task.tag_list ).not_to include(tag_name)
+    end
+  end
 end
