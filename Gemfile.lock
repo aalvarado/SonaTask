@@ -45,6 +45,8 @@ GEM
     arel (6.0.0)
     bcrypt (3.1.10)
     builder (3.2.2)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     database_cleaner (1.4.0)
     devise (3.4.1)
@@ -58,6 +60,7 @@ GEM
       devise (~> 3.3)
       rails (~> 4.2)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     erubis (2.7.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -144,6 +147,11 @@ GEM
     rspec-support (3.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simplecov (0.9.2)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.9.0)
+    simplecov-html (0.9.0)
     slop (3.6.0)
     spring (1.3.2)
     sprockets (2.12.3)
@@ -178,6 +186,7 @@ DEPENDENCIES
   active_model_serializers
   acts-as-taggable-on
   acts_as_list
+  codeclimate-test-reporter
   database_cleaner
   devise
   devise_token_auth
@@ -187,6 +196,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.0)
   rails-api
+  rake
   responders
   rspec-rails
   shoulda-matchers

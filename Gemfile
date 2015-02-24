@@ -28,8 +28,11 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
+  gem "codeclimate-test-reporter", require: nil
+  gem 'rake'
 end
 
 group :development, :test do
   gem 'rspec-rails'
 end
+
