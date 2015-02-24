@@ -1,8 +1,9 @@
 class Api::V1::TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_task, only: [:show, :update]
 
   def show
-    respond_with current_user.tasks.find params[:id]
+    respond_with @task
   end
 
   def index
@@ -14,10 +15,9 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def update
-    task = current_user.tasks.find params[:id]
-    task.update_attributes task_params
+    @task.update_attributes task_params
 
-    respond_with task
+    respond_with @task
   end
 
   private
@@ -30,5 +30,9 @@ class Api::V1::TasksController < ApplicationController
       :completed_on,
       :position,
     ])
+  end
+
+  def find_task
+    @task = current_user.tasks.find params[:id]
   end
 end
