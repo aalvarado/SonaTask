@@ -41,7 +41,6 @@ describe Api::V1::TasksController do
       it 'returns the right task list' do
         expect( response_body_object['tasks'].count ).to eq 1
       end
-
     end
 
     describe 'create' do
@@ -72,6 +71,15 @@ describe Api::V1::TasksController do
         put :update, id: task.id, task: task_attr.merge({ invalid: 'invalid' })
         expect( response ).to be_success
       end
+    end
+
+    describe 'destroy' do
+      before do
+        task
+        delete :destroy, id: task.id
+      end
+
+      it{ expect( response ).to be_success }
     end
   end #logged in user context
 end
