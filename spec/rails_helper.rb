@@ -5,8 +5,11 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'support/controller_macros'
+require 'support/uploader_support'
 
 ActiveRecord::Migration.maintain_test_schema!
+
+FileUploader.include Support::UploaderSupport
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
@@ -21,6 +24,10 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
     FactoryGirl.lint
+  end
+
+  config.after(:suite) do
+    Support::UploaderSupport.clean_uploads
   end
 
   config.around(:each) do |example|

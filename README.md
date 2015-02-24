@@ -11,6 +11,7 @@ Simple User and Tasks api. See `spec` folder for examples on how to use.
 - Rbenv & ruby-build
 - Postgresql >= 9
 - Postgresql contrib
+- Imagemagick or Minimagick
 - Some command line experience
 
 ## Recommendations
@@ -94,3 +95,4 @@ conn.delete '/auth/sign_out', {}, {'access-token' => '7LBVZufvDJHwhxBwQFf31w', '
 - `login_user` sets auth headers in request. ( `access-token`, `client`, `uid` ).
 - `response_body_object` parses the body of response as JSON and into an `OpenStruct` object.
 - I like to keep `let` and `expect` with spaces between parenthesis
+- The carrierwave uploader's store_dir location is modified for tests and removed at the end of the suite
