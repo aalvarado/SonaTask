@@ -33,12 +33,20 @@ describe Api::V1::TasksController do
     describe 'index' do
       before do
         task
-        get :index
       end
 
-      it{ expect( response ).to be_success }
+      it 'is successful' do
+         expect( response ).to be_success
+      end
 
       it 'returns the right task list' do
+        get :index
+        expect( response_body_object['tasks'].count ).to eq 1
+      end
+
+      it 'can be searched' do
+        create :task, body: 'bar', user: user
+        get :index, basic_search: 'bar'
         expect( response_body_object['tasks'].count ).to eq 1
       end
     end

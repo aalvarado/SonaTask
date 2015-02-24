@@ -7,7 +7,10 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def index
-    respond_with current_user.tasks
+    @tasks = current_user.tasks
+    @tasks = @tasks.basic_search(basic_search) if basic_search.present?
+
+    respond_with @tasks
   end
 
   def create
@@ -35,6 +38,10 @@ class Api::V1::TasksController < ApplicationController
       :position,
       tag_list: []
     ])
+  end
+
+  def basic_search
+    params[:basic_search].to_s.squeeze(' ').strip.gsub(/[^\w\s]/, '')
   end
 
   def find_task
