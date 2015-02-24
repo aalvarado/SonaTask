@@ -1,0 +1,5 @@
+test:
+  <<: *defaults
+  adapter: postgresql
+  database: sonatask_test
+	username: postgres
