@@ -15,6 +15,8 @@ gem 'acts_as_list'
 gem 'textacular'
 gem 'acts-as-taggable-on'
 
+gem 'paperclip'
+
 gem 'factory_girl_rails'
 
 gem 'devise'
