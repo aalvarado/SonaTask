@@ -3,7 +3,15 @@ require 'rails_helper'
 describe Api::V1::TasksController do
   let( :user ) { create :user }
   let( :task ) { create :task, user: user }
-  let( :task_attr ) { attributes_for :task }
+  let( :task_attr ) do
+    {
+      title: 'foo',
+      body: 'bar',
+      expiration: Time.now.utc.as_json,
+      completed_on: Time.now.utc.as_json,
+      position: 1
+    }
+  end
 
   context 'logged in user' do
     before do
