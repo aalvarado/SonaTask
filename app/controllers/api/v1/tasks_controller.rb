@@ -8,8 +8,8 @@ class Api::V1::TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks
-    @tasks = @tasks.basic_search(basic_search) if basic_search.present?
-    @tasks = @tasks.tagged_with(tagged_with)   if tagged_with.present?
+    @tasks = @tasks.basic_search(basic_search)            if basic_search.present?
+    @tasks = @tasks.tagged_with(tagged_with, any: true)   if tagged_with.present?
 
     paginate_with @tasks
   end

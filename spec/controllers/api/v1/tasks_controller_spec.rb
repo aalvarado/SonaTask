@@ -61,14 +61,23 @@ describe Api::V1::TasksController do
         expect( response.headers['Total'].to_i ).to eq user.tasks.size
       end
 
-      it 'can be searched with tags' do
-        create :task, user: user, tag_list: 'foo'
-        create :task, user: user, tag_list: 'bar'
+      describe 'tags' do
+        before do
+          create :task, user: user, tag_list: 'foo'
+          create :task, user: user, tag_list: 'bar'
+        end
 
-        get :index, tagged_with: 'foo'
+        it 'can be searched with tags' do
+          get :index, tagged_with: 'foo'
 
-        expect( response_body_object.tasks.count ).to eq 1
-        expect( response_body_object.tasks.first['tag_list'] ).to include 'foo'
+          expect( response_body_object.tasks.count ).to eq 1
+          expect( response_body_object.tasks.first['tag_list'] ).to include 'foo'
+        end
+
+        it 'matches tags with any' do
+          get :index, tagged_with: 'foo, bar'
+          expect( response_body_object.tasks.count ).to eq 2
+        end
       end
     end
 
