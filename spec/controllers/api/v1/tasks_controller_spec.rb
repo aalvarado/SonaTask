@@ -58,25 +58,6 @@ describe Api::V1::TasksController do
       end
 
       it{ expect( response ).to be_success }
-
-      describe 'attachment_attributes' do
-        let( :file_upload ) { create :file_upload }
-        let( :attachments_attr ) do
-          { attachments_attributes: {
-            "0" => { file: file_upload }
-          }}
-        end
-
-        before do
-          task_attr.merge! attachments_attr
-        end
-
-        it 'creates attachments' do
-          post :create, task: task_attr
-          task = Task.last
-          expect( task.attachments.size ).to eq 1
-        end
-      end
     end
 
     describe 'update' do
