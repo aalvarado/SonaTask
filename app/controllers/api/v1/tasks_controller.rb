@@ -9,6 +9,7 @@ class Api::V1::TasksController < ApplicationController
   def index
     @tasks = current_user.tasks
     @tasks = @tasks.basic_search(basic_search) if basic_search.present?
+    @tasks = @tasks.tagged_with(tagged_with)   if tagged_with.present?
 
     paginate_with @tasks
   end
@@ -44,6 +45,10 @@ class Api::V1::TasksController < ApplicationController
 
   def basic_search
     params[:basic_search].to_s.squeeze(' ').strip.gsub(/[^\w\s]/, '')
+  end
+
+  def tagged_with
+    params[:tagged_with].to_s.squeeze(' ').strip.gsub(/[^\w\s\,]/, '')
   end
 
   def find_task
