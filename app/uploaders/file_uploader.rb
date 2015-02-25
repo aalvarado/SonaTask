@@ -49,4 +49,3 @@ class FileUploader < CarrierWave::Uploader::Base
     "tmp/uploads"
   end
 end
-

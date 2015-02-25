@@ -16,7 +16,6 @@ gem 'textacular'
 gem 'acts-as-taggable-on'
 
 gem 'carrierwave'
-gem 'carrierwave-base64'
 
 gem 'factory_girl_rails'
 
