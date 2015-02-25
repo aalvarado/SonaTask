@@ -74,6 +74,25 @@ describe Api::V1::TasksController do
         expect( response_body_object.task['id'] ).to be_present
         expect( response_body_object.task['title'] ).to eq task_attr[:title]
       end
+
+      describe 'attachment_attributes' do
+        let( :file_upload ) { create :file_upload }
+        let( :attachments_attr ) do
+          { attachments_attributes: {
+            "0" => { file: file_upload }
+          }}
+        end
+
+        before do
+          task_attr.merge! attachments_attr
+        end
+
+        it 'creates attachments' do
+          post :create, task: task_attr
+          task = Task.last
+          expect( task.attachments.size ).to eq 1
+        end
+      end
     end
 
     describe 'update' do

@@ -6,6 +6,8 @@ class Task < ActiveRecord::Base
 
   acts_as_taggable
 
+  accepts_nested_attributes_for :attachments, allow_destroy: true
+
   validates :title, presence: true
   validates :body,  presence: true
   validates :user,  presence: true, associated: true

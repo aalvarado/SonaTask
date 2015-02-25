@@ -37,7 +37,8 @@ class Api::V1::TasksController < ApplicationController
       :expiration,
       :completed_on,
       :position,
-      tag_list: []
+      tag_list: [],
+      attachments_attributes: [:id, file: [:data, :content_type, :filename]]
     ])
   end
 
