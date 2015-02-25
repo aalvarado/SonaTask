@@ -84,6 +84,7 @@ server {
 ```ruby
 # pry for example
 
+#you might want to set the content type on each request or use some faraday middle ware
 require 'faraday'; conn = Faraday.new( url: 'https://sonatask.dev', :ssl => {:verify => false } ) { |f| f.request :url_encoded; f.response :logger;  f.adapter Faraday.default_adapter }
 conn.post '/auth', { email: 'some@dev.dev', password: 'password' }
 conn.post '/auth/sign_in', { email: 'some@dev.dev', password: 'password' }
