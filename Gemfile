@@ -14,6 +14,7 @@ gem 'responders'
 gem 'acts_as_list'
 gem 'textacular'
 gem 'acts-as-taggable-on'
+gem 'api-pagination'
 
 gem 'carrierwave'
 

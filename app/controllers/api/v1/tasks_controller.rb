@@ -10,7 +10,7 @@ class Api::V1::TasksController < ApplicationController
     @tasks = current_user.tasks
     @tasks = @tasks.basic_search(basic_search) if basic_search.present?
 
-    respond_with @tasks
+    paginate_with @tasks
   end
 
   def create

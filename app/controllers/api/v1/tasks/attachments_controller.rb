@@ -8,7 +8,7 @@ class Api::V1::Tasks::AttachmentsController < ApplicationController
   end
 
   def index
-    respond_with @task.attachments
+    paginate_with @task.attachments
   end
 
   def create

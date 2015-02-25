@@ -26,8 +26,19 @@ describe Api::V1::Tasks::AttachmentsController do
       end
 
       it{ expect( response ).to be_success }
+
       it 'returns the right attachment list' do
         expect( response_body_object['attachments'].count ).to eq 1
+      end
+
+      it 'can be paginated' do
+        attachments_size = 5
+        create_list :attachment, attachments_size, task: task
+
+        get :index, task_id: task.id, page: 1, per_page: 3
+
+        expect( response_body_object['attachments'].count ).to eq 3
+        expect( response.headers['Total'].to_i ).to eq task.attachments.size
       end
     end
 

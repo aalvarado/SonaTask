@@ -50,6 +50,16 @@ describe Api::V1::TasksController do
         get :index, basic_search: 'bar'
         expect( response_body_object['tasks'].count ).to eq 1
       end
+
+      it 'can be paginated' do
+        task_size = 5
+        create_list :task, task_size, user: user
+
+        get :index, page: 1, per_page: 3
+
+        expect( response_body_object['tasks'].count ).to eq 3
+        expect( response.headers['Total'].to_i ).to eq user.tasks.size
+      end
     end
 
     describe 'create' do
