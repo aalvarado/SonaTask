@@ -36,6 +36,7 @@ describe Api::V1::TasksController do
       end
 
       it 'is successful' do
+        get :index
          expect( response ).to be_success
       end
 
@@ -58,6 +59,11 @@ describe Api::V1::TasksController do
       end
 
       it{ expect( response ).to be_success }
+
+      it 'returns the right task' do
+        expect( response_body_object.task['id'] ).to be_present
+        expect( response_body_object.task['title'] ).to eq task_attr[:title]
+      end
     end
 
     describe 'update' do
