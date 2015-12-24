@@ -86,7 +86,7 @@ GEM
     mime-types (2.6.1)
     mini_portile2 (2.0.0)
     minitest (5.7.0)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
@@ -206,6 +206,3 @@ DEPENDENCIES
   textacular
   versionist
   will_paginate
-
-BUNDLED WITH
-   1.10.4
