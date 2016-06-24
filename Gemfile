@@ -8,7 +8,7 @@ gem 'pg'
 
 gem 'pry-rails'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '0.9.5'
 gem 'will_paginate'
 gem 'responders'
 gem 'acts_as_list'
@@ -20,9 +20,9 @@ gem 'carrierwave'
 
 gem 'factory_girl_rails'
 
-gem 'devise'
+gem 'devise', '3.5.2'
 gem 'omniauth'
-gem 'devise_token_auth'
+gem 'devise_token_auth', '0.1.36'
 
 group :development do
   gem 'spring'
@@ -37,5 +37,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry-byebug'
 end
 

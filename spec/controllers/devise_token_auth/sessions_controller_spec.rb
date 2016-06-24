@@ -22,7 +22,7 @@ describe DeviseTokenAuth::SessionsController do
       end
 
       it 'is 401' do
-        post :create, auth_attr
+        post :create, user: auth_attr
         expect( response.status ).to eq 401
       end
     end
@@ -35,7 +35,7 @@ describe DeviseTokenAuth::SessionsController do
       end
 
       it 'is 401' do
-        post :create, auth_attr
+        post :create, user: auth_attr
         expect( response.status ).to eq 401
       end
 
