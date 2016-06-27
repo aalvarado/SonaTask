@@ -5,5 +5,9 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
+  before_validation do
+    self.uid = email if uid.blank?
+  end
+
   has_many :tasks, -> { order("position ASC") }, dependent: :destroy
 end

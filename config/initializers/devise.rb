@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '0efa09a41de680a45eadca5c2f1ab1062331f8ebd932c64d118ce40aad5669fd3066ab1c3810ff8556d3be70de9c1137653f3a65227721ac8ce1f43b9ea62ed0'
+  config.secret_key = Rails.env.production? ? ENV['DEVISE_SECRET_KEY'] : '1efa09a41de680a45eadca5c2f1ab1062331f8ebd932c64d118ce40aad5669fd3066ab1c3810ff8556d3be70de9c1137653f3a65227721ac8ce1f43b9ea62ed0'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -14,7 +14,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-
+  #
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -145,7 +145,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
