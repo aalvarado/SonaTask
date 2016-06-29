@@ -23,6 +23,11 @@ gem 'factory_girl_rails'
 gem 'devise', '3.5.2'
 gem 'omniauth'
 gem 'devise_token_auth', '0.1.36'
+gem 'react-rails'
+gem 'slim'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :development do
   gem 'spring'
