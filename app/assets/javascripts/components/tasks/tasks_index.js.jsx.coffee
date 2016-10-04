@@ -5,5 +5,5 @@
     #$.getJSON "/tasks.json", (data) =>
     #@setState task: {}
 
-  #render: ->
-    #`<ExampleComponent />`
+  render: ->
+    div {}, 'lulz'

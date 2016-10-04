@@ -28,6 +28,8 @@ gem 'slim'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'coffee-rails'
+gem 'sass'
 
 group :development do
   gem 'spring'
