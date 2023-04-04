@@ -32,7 +32,7 @@ bundle install
 
 Create the `config/secrets.yml` and `config/initializers/secret_token.rb` files
 
-Create a postgresql and create `config/database.yml`, an example is provided at `config/database.yml.example`.
+Start Postgresql and copy `config/database.yml` from `config/database.yml.example`.
 
 `bundle exec rake db:setup`
 
