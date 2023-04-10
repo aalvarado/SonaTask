@@ -2,8 +2,11 @@
 [![Code Climate](https://codeclimate.com/github/aalvarado/SonaTask/badges/gpa.svg)](https://codeclimate.com/github/aalvarado/SonaTask)
 [![Test Coverage](https://codeclimate.com/github/aalvarado/SonaTask/badges/coverage.svg)](https://codeclimate.com/github/aalvarado/SonaTask)
 
+User and Tasks Rails API using PostgreSQL Database with Full Text Search support through the `pg_trgm` module which Textacular uses to search through Task body column.
 
-Simple User and Tasks api. See `spec` folder for examples on how to use.
+The `tasks_controller` class lists how a user may interact with their associated tasks. 
+
+Please review the `specs` folder for more insight into the details on how this works as well as the example using Faraday at the bottom of the page.
 
 ## Prerequisites
 
